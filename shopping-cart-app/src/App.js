@@ -1,5 +1,4 @@
-import React from "react";
-import Axios from 'axios';
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { Navbar } from "./components/navbar";
@@ -7,13 +6,17 @@ import { Shop } from "./pages/shop/shop";
 import { Cart } from "./pages/cart/cart";
 
 function App() {
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products", { mode: "cors" })
+      .then((response) => response.json())
+      .then((response) => {
+        response.forEach(product => console.log(product));
+      })
+      .catch((error) => console.log(error))
+  }, []);
+  
 
-  const getData = () => {
-    Axios.get("https://fakestoreapi.com/products").then((response) => {
-      console.log(response);
-    });
-  };
-  getData();
+  
   return (
     <div className="App">
       <Router>
