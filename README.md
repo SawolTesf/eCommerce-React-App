@@ -1,6 +1,6 @@
 # eCommerce React App
 
-Welcome to the eCommerce React App! This project showcases a fully functional web application for an online shopping cart, built using React.js. I designed this project to demonstrate my expertise in front-end development, React.js, state management, and responsive design.
+Welcome to the eCommerce React App! This project showcases a fully functional web application for an online shopping cart, built using React.js and styled with Tailwind CSS. I designed this project to demonstrate my expertise in front-end development, React.js, state management, and responsive design.
 
 ## Project Description
 
@@ -20,7 +20,7 @@ Please note: This project is purely for demonstration purposes, and it will not 
 - State Management: Implement state management techniques to handle the shopping cart and user interactions.
 - Responsive Design: Create a mobile-friendly layout using media queries and flexbox.
 - API Integration: Integrate APIs to fetch product data and provide real-time product information.
-- Version Control: Utilize Git and GitHub for version control and collaborative development.
+- Tailwind CSS: Employ the Tailwind CSS framework to efficiently style the application.
 
 ## Technical Details
 
