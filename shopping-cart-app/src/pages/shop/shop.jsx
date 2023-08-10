@@ -25,7 +25,7 @@ export const Shop = () => {
         <div className='shop-title text-3xl font-bold underline'>
             <h1> Welcome to Our Online Shop </h1>
         </div>
-        <div className='products mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
+        <div className='products grid grid-cols-3 w-full gap-6 justify-stretch pt-6 text-center'>
           {products.map((product) => (
             <Product key={product.id} data={product} className='group relative'/>
           ))}
