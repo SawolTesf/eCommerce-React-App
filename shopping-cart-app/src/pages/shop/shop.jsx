@@ -22,14 +22,14 @@ export const Shop = () => {
 
   return (
     <div className='shop'>
-        <div className='shop-title text-3xl font-bold underline'>
+        <div className='shop-title text-center text-5xl font-bold'>
             <h1> Welcome to Our Online Shop </h1>
         </div>
-        <div className='products grid grid-cols-3 w-full gap-6 justify-stretch pt-6 text-center'>
+        <div className='products grid grid-cols-3 w-full gap-6 justify-stretch pt-6 text-center p-18'>
           {products.map((product) => (
             <Product key={product.id} data={product} className='group relative'/>
           ))}
         </div>
     </div>
-  );
+);
 }
