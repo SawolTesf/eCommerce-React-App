@@ -5,8 +5,9 @@ export const getProducts = () => {
     .then((response) => response.json()) // Parsing the response to JSON
     .then((response) => {
       // Logging the response to the console
-      console.log(response);
-      /*Mapping the response to an array of products. Creates a new array by calling a provided function on every element. Essentially transforms the response into a array of products.*/
+      //console.log(response);
+
+      /* Mapping the response to an array of products. Creates a new array by calling a provided function on every element. Essentially transforms the response into a array of products */
       return response.map((product, index) => ({
         id: index + 1,
         title: product.title,
