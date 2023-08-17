@@ -5,11 +5,9 @@ import { ShopContext } from '../../context/shop-context';
 export const Product = (props) => {
     // Destructuring the data object from props
     const { id, title, price, description, category, image } = props.data;
-    const { addToCart } = React.useContext(ShopContext);
-    // Logging the id and description to the console
+    const { addToCart, cartItems } = React.useContext(ShopContext);
 
-    //console.log(id);
-    //console.log(description);
+    const cartItemAmount = cartItems[id];
     
     // Returning the JSX for the Product component
     return (
@@ -23,7 +21,7 @@ export const Product = (props) => {
                 <p className='font-bold text-xl h-6 overflow-hidden mb-6'><b>${price}</b></p>
             </div>
             {/* Add to cart button */}
-            <button className='addToCartbtn transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none p-2' onClick={() => addToCart(id)}> Add To Cart </button>
+            <button className='addToCartbtn transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none p-2' onClick={() => addToCart(id)}> Add To Cart {cartItemAmount > 0 && <> ({cartItemAmount})</>}</button> {/* Only displays cart amount if amount larger than zero */}
         </div>
     )
 }
