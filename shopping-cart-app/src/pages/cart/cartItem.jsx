@@ -6,7 +6,7 @@ export const CartItem = (props) => {
   const { id, title, price, description, category, image } = props.data;
 
   // Using the useContext hook to access the ShopContext
-  const { addToCart, removeFromCart, cartItems } = React.useContext(ShopContext);
+  const { addToCart, removeFromCart, removeItem, cartItems } = React.useContext(ShopContext);
 
   // Getting the quantity of this item in the cart
   const cartItemAmount = cartItems[id];
@@ -37,8 +37,8 @@ export const CartItem = (props) => {
               <div className='flex items-center space-x-4'>
                 {/* Price display */}
                 <p className='text-sm'>${price}</p>
-                {/* Remove item button (not currently functional) */}
-                <svg className='h-5 w-5 cursor-pointer duration-150 hover:text-red-500' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor'> 
+                {/* Remove item button */}
+                <svg onClick={() => removeItem(id)} className='h-5 w-5 cursor-pointer duration-150 hover:text-red-500' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor'> 
                   <path strokeLinecap='round' strokeLinejoin='round' d='M6 18L18 6M6 6l12 12'></path>
                 </svg>
               </div>
