@@ -27,7 +27,6 @@ export const Cart = () => {
         <div className='cartItems'>
           {products.map((product) => {
             if(cartItems[product.id] > 0){
-              console.log(product.id);
               return <CartItem key={product.id} data={product} />
             }
           })}
