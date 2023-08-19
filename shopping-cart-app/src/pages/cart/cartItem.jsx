@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ShopContext } from '../../context/shop-context';
 
 export const CartItem = (props) => {
@@ -11,9 +11,18 @@ export const CartItem = (props) => {
   // Getting the quantity of this item in the cart
   const cartItemAmount = cartItems[id];
 
+  // State for tracking whether item is being removed
+  const [isRemoving, setIsRemoving] = useState(false);
+
+  // Handle remove item button click
+  const handleRemoveClick = () => {
+    setIsRemoving(true);
+    setTimeout(() => removeItem(id), 300);
+  }
+
   // Returning the JSX for the CartItem component
   return (
-    <div className='product-container'>
+    <div className={`product-container ${isRemoving ? 'fade-out' : ''}`}>
       <div className='products rounded-lg md:w-full'>
         <div className='product justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start'>
           {/* Product image */}
@@ -38,7 +47,7 @@ export const CartItem = (props) => {
                 {/* Price display */}
                 <p className='text-sm'>${price}</p>
                 {/* Remove item button */}
-                <svg onClick={() => removeItem(id)} className='h-5 w-5 cursor-pointer duration-150 hover:text-red-500' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor'> 
+                <svg onClick={handleRemoveClick} className='h-5 w-5 cursor-pointer duration-150 hover:text-red-500' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor'> 
                   <path strokeLinecap='round' strokeLinejoin='round' d='M6 18L18 6M6 6l12 12'></path>
                 </svg>
               </div>
@@ -46,6 +55,16 @@ export const CartItem = (props) => {
           </div>
         </div>
       </div>
+
+      {/* Styles for fade-out animation */}
+      <style 
+        jsx>{`
+          .fade-out {
+            opacity: 0;
+            transition: opacity 300ms;
+          }
+        `}
+      </style>
     </div>
   )
 }
