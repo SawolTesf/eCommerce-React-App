@@ -33,8 +33,6 @@ export const ShopContextProvider = (props) => {
   // Using the useEffect hook to initialize the cart when the component mounts
   useEffect(() => {
     // Calling the getDefaultCart function and updating the state with the returned value
-
-    /* .then method used to update state with returned value */
     getDefaultCart().then(cart => setCartItems(cart));
   }, []);
 
@@ -50,18 +48,27 @@ export const ShopContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [id]: prev[id] - 1 }));
   };
 
-  /* The contextValue object contains all of the data and functions that will be shared with child components through context. This object is passed as a prop to the ShopContext.Provider component, which provides this value to all child components. */
+  // Function for removing an item from the cart completely
+  const removeItem = (id) => {
+    // Updating the state using a functional update
+    setCartItems((prev) => ({ ...prev, [id]: 0 }));
+  };
+
+  // Function for clearing the cart
+  const clearCart = () => {
+    // Updating the state using a functional update
+    setCartItems((prev) => {
+      let newCart = { ...prev };
+      Object.keys(newCart).forEach(key => newCart[key] = 0);
+      return newCart;
+    });
+  };
 
   // Creating the context value object
-  const contextValue = {cartItems, addToCart, removeFromCart};
+  const contextValue = {cartItems, addToCart, removeFromCart, removeItem, clearCart};
   
-  console.log(cartItems);
-
-return (
-
-  /* ShopContextProvider componets used to provide this context to all child components */
-
-  // Providing the context value to all child components
-  <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>
-)
+  return (
+    // Providing the context value to all child components
+    <ShopContext.Provider value={contextValue}>{props.children}</ShopContext.Provider>
+  )
 }
