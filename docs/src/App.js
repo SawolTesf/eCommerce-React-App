@@ -15,7 +15,7 @@ function App() {
       {/* This provides the ShopContext to all child components of the Router */}
       <ShopContextProvider>
         {/* Setting up the router */}
-        <Router>
+        <Router basename="/eCommerce-React-App">
           {/* Navbar component */}
           <Navbar />
           {/* Defining the routes */}
